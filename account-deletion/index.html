@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Account Deletion - Airmass Xpress</title>
+    <link rel="stylesheet" href="../index.css">
+    <style>
+        .deletion-box {
+            max-width: 600px;
+            margin: 8rem auto;
+            padding: 3rem;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--navy);
+        }
+
+        input,
+        textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-family: inherit;
+        }
+
+        .message {
+            padding: 1rem;
+            border-radius: 6px;
+            margin-bottom: 1.5rem;
+            display: none;
+        }
+
+        .message.success {
+            background: #d4edda;
+            color: #155724;
+            display: block;
+        }
+
+        .message.error {
+            background: #f8d7da;
+            color: #721c24;
+            display: block;
+        }
+
+        button:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <nav>
+            <div class="logo">
+                <a href="/"><img src="../images/logo.png" alt="Airmass Xpress"></a>
+            </div>
+            <div class="nav-links">
+                <a href="/">Home</a>
+                <a href="/privacy_policy">Privacy</a>
+                <a href="#delete" class="btn">Delete Account</a>
+            </div>
+        </nav>
+    </header>
+
+    <div class="container">
+        <div class="deletion-box" id="delete">
+            <h1 style="color: var(--navy); margin-bottom: 1rem;">Delete My Account</h1>
+            <p style="margin-bottom: 2rem; color: #666;">Enter your email to permanently delete your Airmass Xpress
+                account. This action cannot be undone.</p>
+
+            <div id="status-message" class="message"></div>
+
+            <form id="deletion-form">
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" required placeholder="your@email.com">
+                </div>
+                <div class="form-group">
+                    <label for="reason">Reason (Optional)</label>
+                    <textarea id="reason" rows="3" placeholder="Why are you leaving?"></textarea>
+                </div>
+                <button type="submit" id="submit-btn" class="btn"
+                    style="width: 100%; border: none; cursor: pointer;">Request Deletion</button>
+            </form>
+        </div>
+    </div>
+
+    <footer>
+        <p><strong>Airmass Sustainables (Pvt) Ltd</strong></p>
+        <p>356 Rayden Drive, Borrowdale, Harare</p>
+        <p>Email: <a href="mailto:info@airmassafrica.co.zw">info@airmassafrica.co.zw</a> | +263 789 925 823</p>
+        <p style="margin-top: 1.5rem;">
+            <a href="/privacy_policy">Privacy Policy</a> |
+            <a href="/account-deletion">Account Deletion</a>
+        </p>
+        <p>&copy; 2025 All rights reserved.</p>
+    </footer>
+
+    <script>
+        document.getElementById('deletion-form').addEventListener('submit', async function (e) {
+            e.preventDefault();
+
+            const email = document.getElementById('email').value;
+            const msgBox = document.getElementById('status-message');
+            const btn = document.getElementById('submit-btn');
+
+            btn.disabled = true;
+            btn.textContent = 'Processing...';
+            msgBox.className = 'message';
+
+            try {
+                const response = await fetch('/api/delete-account', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ email, reason })
+                });
+
+                const result = await response.json();
+
+                if (response.ok) {
+                    msgBox.textContent = 'Deletion request submitted. We will process it within 7 days.';
+                    msgBox.className = 'message success';
+                    this.reset();
+                } else {
+                    throw new Error(result.message || 'Failed to submit request');
+                }
+            } catch (error) {
+                msgBox.textContent = error.message;
+                msgBox.className = 'message error';
+            } finally {
+                btn.disabled = false;
+                btn.textContent = 'Request Deletion';
+            }
+        });
+    </script>
+
+</body>
+
+</html>
