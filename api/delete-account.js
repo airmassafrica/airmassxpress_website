@@ -12,8 +12,8 @@ export default async function handler(req, res) {
 
     // Use environment variables if available, otherwise use provided defaults
     const RESEND_API_KEY = process.env.RESEND_API_KEY || 're_7Nkeuvpm_EShMRS8bNsf8DcCPXf4jimc7';
-    const FROM_EMAIL = process.env.RESEND_FROM_EMAIL || 'support@airmass.c';
-    const TO_EMAIL = 'info@airmassafrica.co.zw';
+    const FROM_EMAIL = process.env.RESEND_FROM_EMAIL || 'support@airmass.co.zw';
+    const TO_EMAIL = 'tapiwa@airmass.co.zw';
 
     try {
         const response = await fetch('https://api.resend.com/emails', {

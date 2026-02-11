@@ -4,79 +4,125 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Airmass Xpress - Connect with Skilled Professionals</title>
+    <title>Airmass Xpress - Coming Soon</title>
     <link rel="stylesheet" href="index.css">
+    <style>
+        .coming-soon {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, var(--navy) 0%, #1a1a2e 100%);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .coming-soon img {
+            height: 80px;
+            margin-bottom: 2rem;
+        }
+
+        .coming-soon h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            letter-spacing: -0.5px;
+        }
+
+        .coming-soon .tagline {
+            font-size: 1.3rem;
+            opacity: 0.9;
+            max-width: 550px;
+            margin-bottom: 3rem;
+        }
+
+        .coming-soon .badge {
+            display: inline-block;
+            background: var(--red);
+            padding: 0.6rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            margin-bottom: 3rem;
+            letter-spacing: 1px;
+        }
+
+        .screen-preview {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 3rem;
+        }
+
+        .screen-preview img {
+            width: 200px;
+            height: auto;
+            border-radius: 16px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+        }
+
+        .contact-line {
+            opacity: 0.7;
+            font-size: 0.9rem;
+        }
+
+        .contact-line a {
+            color: white;
+        }
+
+        .footer-links {
+            margin-top: 2rem;
+            opacity: 0.6;
+            font-size: 0.85rem;
+        }
+
+        .footer-links a {
+            color: white;
+            margin: 0 0.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .coming-soon h1 {
+                font-size: 2rem;
+            }
+
+            .screen-preview img {
+                width: 140px;
+            }
+        }
+    </style>
 </head>
 
 <body>
-
-    <header>
-        <nav>
-            <div class="logo">
-                <a href="/"><img src="images/logo.png" alt="Airmass Xpress"></a>
-            </div>
-            <div class="nav-links">
-                <a href="/">Home</a>
-                <a href="/privacy_policy">Privacy</a>
-                <a href="#download" class="btn">Download</a>
-            </div>
-        </nav>
-    </header>
-
-    <section class="hero">
-        <h1>Find Skilled Professionals.<br>Get Work Done.</h1>
-        <p>Connect with verified tradesmen, consultants, and equipment providers across Zimbabwe.</p>
-        <a href="#download" class="btn">Get the App</a>
-    </section>
-
-    <section class="screenshots">
-        <h2>Experience Airmass Xpress</h2>
-        <div class="screen-grid">
-            <img src="images/screen1.png" alt="App Screenshot">
-            <img src="images/screen2.png" alt="App Screenshot">
-            <img src="images/screen3.png" alt="App Screenshot">
-        </div>
-    </section>
-
-    <section class="features">
-        <h2>Why Choose Us</h2>
-        <div class="feature-grid">
-            <div class="feature">
-                <h3>Verified Pros</h3>
-                <p>All professionals are vetted for quality and reliability.</p>
-            </div>
-            <div class="feature">
-                <h3>Competitive Bids</h3>
-                <p>Receive multiple quotes and choose the best fit.</p>
-            </div>
-            <div class="feature">
-                <h3>Equipment Hire</h3>
-                <p>Access construction equipment when you need it.</p>
-            </div>
-            <div class="feature">
-                <h3>Secure Payments</h3>
-                <p>Safe mobile wallet transactions built-in.</p>
-            </div>
-        </div>
-    </section>
-
-    <section id="download" class="hero" style="padding: 4rem 2rem;">
-        <h2>Ready to Get Started?</h2>
-        <p>Download Airmass Xpress and transform how you find skilled labor.</p>
-        <a href="#" class="btn">Download APK</a>
-    </section>
-
-    <footer>
-        <p><strong>Airmass Sustainables (Pvt) Ltd</strong></p>
-        <p>356 Rayden Drive, Borrowdale, Harare</p>
-        <p>Email: <a href="mailto:info@airmassafrica.co.zw">info@airmassafrica.co.zw</a> | +263 789 925 823</p>
-        <p style="margin-top: 1.5rem;">
-            <a href="/privacy_policy">Privacy Policy</a> |
-            <a href="/account-deletion">Account Deletion</a>
+    <section class="coming-soon">
+        <img src="images/logo.png" alt="Airmass Xpress">
+        <span class="badge">COMING SOON</span>
+        <h1>Airmass Xpress</h1>
+        <p class="tagline">Connecting you with verified tradesmen, consultants, and equipment providers across Zimbabwe.
         </p>
-        <p>&copy; 2025 All rights reserved.</p>
-    </footer>
 
+        <div class="screen-preview">
+            <img src="images/screen1.png" alt="App Preview">
+            <img src="images/screen2.png" alt="App Preview">
+            <img src="images/screen3.png" alt="App Preview">
+        </div>
+
+        <p class="contact-line">
+            <a href="mailto:info@airmassafrica.co.zw">info@airmassafrica.co.zw</a> &middot; +263 789 925 823
+        </p>
+        <p class="contact-line" style="margin-top: 0.5rem;">
+            Airmass Sustainables (Pvt) Ltd &middot; 356 Rayden Drive, Borrowdale, Harare
+        </p>
+
+        <div class="footer-links">
+            <a href="/privacy_policy">Privacy Policy</a> &middot;
+            <a href="/delete-account">Account Deletion</a>
+        </div>
+        <p class="footer-links">&copy; 2025 All rights reserved.</p>
+    </section>
 </body>
 
 </html>
