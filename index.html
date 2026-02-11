@@ -4,125 +4,309 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Airmass Xpress - Coming Soon</title>
+    <title>Airmass Xpress - Redesigned & Revamped</title>
     <link rel="stylesheet" href="index.css">
     <style>
-        .coming-soon {
+        :root {
+            --navy-deep: #1a1a2e;
+            --navy-accent: #2a2d72;
+            --red-bright: #e52027;
+            --premium-gray: #f4f7fa;
+        }
+
+        body {
+            background-color: var(--white);
+            overflow-x: hidden;
+        }
+
+        .premium-hero {
             min-height: 100vh;
             display: flex;
             flex-direction: column;
-            justify-content: center;
             align-items: center;
-            background: linear-gradient(135deg, var(--navy) 0%, #1a1a2e 100%);
+            justify-content: center;
+            background: linear-gradient(135deg, var(--navy-accent) 0%, var(--navy-deep) 100%);
             color: white;
             text-align: center;
-            padding: 2rem;
+            padding: 4rem 2rem;
+            position: relative;
         }
 
-        .coming-soon img {
-            height: 80px;
-            margin-bottom: 2rem;
+        .premium-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><g fill="%23ffffff" fill-opacity="0.03" fill-rule="evenodd"><circle cx="3" cy="3" r="1.5"/><circle cx="13" cy="13" r="1.5"/></g></svg>');
+            pointer-events: none;
         }
 
-        .coming-soon h1 {
-            font-size: 3rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-            letter-spacing: -0.5px;
+        .hero-content {
+            max-width: 800px;
+            z-index: 2;
         }
 
-        .coming-soon .tagline {
-            font-size: 1.3rem;
+        .logo-center {
+            height: 90px;
+            margin-bottom: 2.5rem;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.2));
+        }
+
+        .premium-hero h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            letter-spacing: -1.5px;
+            line-height: 1.1;
+        }
+
+        .premium-hero h1 span {
+            color: var(--red-bright);
+        }
+
+        .premium-hero .description {
+            font-size: 1.25rem;
             opacity: 0.9;
-            max-width: 550px;
+            line-height: 1.8;
             margin-bottom: 3rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
-        .coming-soon .badge {
-            display: inline-block;
-            background: var(--red);
-            padding: 0.6rem 1.5rem;
-            border-radius: 50px;
-            font-weight: 600;
-            font-size: 0.95rem;
-            margin-bottom: 3rem;
-            letter-spacing: 1px;
-        }
-
-        .screen-preview {
+        /* Countdown Timer */
+        .countdown-container {
             display: flex;
             gap: 1.5rem;
             justify-content: center;
-            flex-wrap: wrap;
-            margin-bottom: 3rem;
+            margin-bottom: 4rem;
         }
 
-        .screen-preview img {
-            width: 200px;
-            height: auto;
+        .count-item {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 1.5rem;
             border-radius: 16px;
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+            min-width: 100px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
         }
 
-        .contact-line {
+        .count-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            display: block;
+            color: var(--red-bright);
+        }
+
+        .count-label {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
             opacity: 0.7;
-            font-size: 0.9rem;
         }
 
-        .contact-line a {
-            color: white;
-        }
-
-        .footer-links {
+        /* Mockup Inspiration from landing.jpg */
+        .mockup-display {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 2rem;
             margin-top: 2rem;
-            opacity: 0.6;
-            font-size: 0.85rem;
+            perspective: 1000px;
         }
 
-        .footer-links a {
+        .mockup-img {
+            width: 240px;
+            border-radius: 24px;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5);
+            transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .mockup-img:nth-child(1) {
+            --rot: 15deg;
+            transform: rotateY(15deg) translateY(20px);
+        }
+
+        .mockup-img:nth-child(2) {
+            --rot: 0deg;
+            transform: scale(1.1);
+            z-index: 10;
+            animation-delay: -2s;
+        }
+
+        .mockup-img:nth-child(3) {
+            --rot: -15deg;
+            transform: rotateY(-15deg) translateY(20px);
+            animation-delay: -4s;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0px) rotateY(var(--rot, 0deg));
+            }
+
+            50% {
+                transform: translateY(-20px) rotateY(var(--rot, 0deg));
+            }
+
+            100% {
+                transform: translateY(0px) rotateY(var(--rot, 0deg));
+            }
+        }
+
+        .mockup-img:hover {
+            transform: scale(1.15) !important;
+            z-index: 100;
+        }
+
+        .social-proof {
+            margin-top: 5rem;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 50px;
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .social-proof strong {
+            color: var(--white);
+            font-size: 1.2rem;
+        }
+
+        /* Footer Mini */
+        .footer-premium {
+            padding: 4rem 2rem;
+            background: var(--navy-deep);
             color: white;
-            margin: 0 0.5rem;
+            text-align: center;
+        }
+
+        .footer-premium a {
+            color: rgba(255, 255, 255, 0.6);
+            text-decoration: none;
+            margin: 0 1rem;
+            font-size: 0.9rem;
+            transition: color 0.3s;
+        }
+
+        .footer-premium a:hover {
+            color: var(--red-bright);
         }
 
         @media (max-width: 768px) {
-            .coming-soon h1 {
-                font-size: 2rem;
+            .premium-hero h1 {
+                font-size: 2.2rem;
             }
 
-            .screen-preview img {
-                width: 140px;
+            .countdown-container {
+                gap: 0.5rem;
+            }
+
+            .count-item {
+                min-width: 70px;
+                padding: 1rem;
+            }
+
+            .count-number {
+                font-size: 1.5rem;
+            }
+
+            .mockup-display {
+                flex-direction: column;
+                gap: 3rem;
+            }
+
+            .mockup-img {
+                width: 200px;
+                transform: none !important;
             }
         }
     </style>
 </head>
 
 <body>
-    <section class="coming-soon">
-        <img src="images/logo.png" alt="Airmass Xpress">
-        <span class="badge">COMING SOON</span>
-        <h1>Airmass Xpress</h1>
-        <p class="tagline">Connecting you with verified tradesmen, consultants, and equipment providers across Zimbabwe.
-        </p>
+    <section class="premium-hero">
+        <div class="hero-content">
+            <img src="images/logo.png" alt="Airmass Xpress" class="logo-center">
+            <h1>A New Experience is <span>Coming Soon</span></h1>
+            <p class="description">
+                Our app was redesigned and revamped to offer a more seamless connection between verified tradesmen and
+                clients across Zimbabwe.
+            </p>
 
-        <div class="screen-preview">
-            <img src="images/screen1.png" alt="App Preview">
-            <img src="images/screen2.png" alt="App Preview">
-            <img src="images/screen3.png" alt="App Preview">
+            <div class="countdown-container">
+                <div class="count-item">
+                    <span class="count-number" id="days">00</span>
+                    <span class="count-label">Days</span>
+                </div>
+                <div class="count-item">
+                    <span class="count-number" id="hours">00</span>
+                    <span class="count-label">Hours</span>
+                </div>
+                <div class="count-item">
+                    <span class="count-number" id="minutes">00</span>
+                    <span class="count-label">Mins</span>
+                </div>
+                <div class="count-item">
+                    <span class="count-number" id="seconds">00</span>
+                    <span class="count-label">Secs</span>
+                </div>
+            </div>
+
+            <div class="mockup-display">
+                <img src="images/screen1.png" alt="App Feature" class="mockup-img">
+                <img src="images/screen2.png" alt="App Dashboard" class="mockup-img">
+                <img src="images/screen3.png" alt="App Profile" class="mockup-img">
+            </div>
+
+            <div class="social-proof">
+                Trusted by <strong>5,000+</strong> professionals and clients nationwide.
+            </div>
         </div>
+    </section>
 
-        <p class="contact-line">
-            <a href="mailto:info@airmassafrica.co.zw">info@airmassafrica.co.zw</a> &middot; +263 789 925 823
-        </p>
-        <p class="contact-line" style="margin-top: 0.5rem;">
-            Airmass Sustainables (Pvt) Ltd &middot; 356 Rayden Drive, Borrowdale, Harare
-        </p>
-
-        <div class="footer-links">
-            <a href="/privacy_policy">Privacy Policy</a> &middot;
+    <footer class="footer-premium">
+        <p style="margin-bottom: 1.5rem; opacity: 0.5;">Airmass Sustainables (Pvt) Ltd &middot; Harare, Zimbabwe</p>
+        <div class="links">
+            <a href="/privacy_policy">Privacy Policy</a>
+            <a href="/terms">Terms & Conditions</a>
             <a href="/delete-account">Account Deletion</a>
         </div>
-        <p class="footer-links">&copy; 2025 All rights reserved.</p>
-    </section>
+        <p style="margin-top: 2rem; font-size: 0.8rem; opacity: 0.3;">&copy; 2025 Airmass Xpress. All rights reserved.
+        </p>
+    </footer>
+
+    <script>
+        // Set fixed countdown for 7 days from now
+        const countdownDate = new Date().getTime() + (7 * 24 * 60 * 60 * 1000);
+
+        const timer = setInterval(function () {
+            const now = new Date().getTime();
+            const distance = countdownDate - now;
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById("days").innerHTML = days < 10 ? "0" + days : days;
+            document.getElementById("hours").innerHTML = hours < 10 ? "0" + hours : hours;
+            document.getElementById("minutes").innerHTML = minutes < 10 ? "0" + minutes : minutes;
+            document.getElementById("seconds").innerHTML = seconds < 10 ? "0" + seconds : seconds;
+
+            if (distance < 0) {
+                clearInterval(timer);
+                document.querySelector(".countdown-container").innerHTML = "<h3>WE ARE LIVE!</h3>";
+            }
+        }, 1000);
+    </script>
 </body>
 
 </html>
